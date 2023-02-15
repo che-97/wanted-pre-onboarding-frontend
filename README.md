@@ -28,4 +28,10 @@
         - todo의 완료 여부는 checkbox를 통해 알 수 있습니다.
         - todo의 추가, 수정, 삭제를 할수 있습니다.
 
+## API
+- API 주소: https://pre-onboarding-selection-task.shop/
+
+https://github.com/walking-sunset/selection-task/blob/master/README.md?plain=1
+
 ## 데모
+<img src="https://user-images.githubusercontent.com/80516736/219056380-a71b17e9-d129-4002-a373-bf31da5aa758.gif">
