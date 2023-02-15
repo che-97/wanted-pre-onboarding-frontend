@@ -10,11 +10,15 @@ function TodoPage() {
   useEffect(() => {
     setIsLoading(true);
     call("/todos", "GET")
-    .then((response) => {
-        console.log(response)
+    .then((response) =>
+      response.json().then((json) => {
+        if (!response.ok) {
+          return Promise.reject(json);
+        }
         setIsLoading(false);
-        setLoadedTodos(response);
-    })
+        setLoadedTodos(json);
+      })
+    )
     .catch((error) => {
         alert(error.message);
     });

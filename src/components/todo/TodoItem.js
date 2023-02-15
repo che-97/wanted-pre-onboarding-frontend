@@ -1,4 +1,9 @@
 function TodoItem(props) {
+
+  function deleteTodo(){
+    props.onDeleteTodo(props.id)
+  }
+
   return (
       <li>
         <label>
@@ -6,7 +11,7 @@ function TodoItem(props) {
           <span>{props.todo}</span>
         </label>
         <button data-testid="modify-button">수정</button>
-        <button data-testid="delete-button">삭제</button>
+        <button onClick={deleteTodo} data-testid="delete-button">삭제</button>
       </li>
   );
 }

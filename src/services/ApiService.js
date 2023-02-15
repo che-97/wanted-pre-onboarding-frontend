@@ -19,24 +19,23 @@ export function call(api, method, request) {
   if (request) {
     options.body = JSON.stringify(request);
   }
-  return fetch(options.url, options).then((response) =>
-    response.json().then((json) => {
-      if (!response.ok) {
-        return Promise.reject(json);
-      }
-      return json;
-    })
-  );
+  return fetch(options.url, options);
 }
 
 export function signin(userDTO) {
   return call("/auth/signin", "POST", userDTO)
-    .then((response) => {
-      if (response.access_token) {
-        localStorage.setItem(ACCESS_TOKEN, response.access_token);
-        window.location.href = "/todo";
-      }
-    })
+    .then((response) =>
+      response.json().then((json) => {
+        if (!response.ok) {
+          return Promise.reject(json);
+        }
+        console.log(json)
+        if (json.access_token) {
+          localStorage.setItem(ACCESS_TOKEN, json.access_token);
+          window.location.href = "/todo";
+        }
+      })
+    )
     .catch((error) => {
         //alert(error.message);
         alert("email과 password를 확인해주세요.")
@@ -50,9 +49,14 @@ export function signout() {
 
 export function signup(userDTO) {
   return call("/auth/signup", "POST", userDTO)
-    .then((response) => {
-      window.location.href = "/signin";
-    })
+    .then((response) =>
+      response.json().then((json) => {
+        if (!response.ok) {
+          return Promise.reject(json);
+        }
+        window.location.href = "/signin";
+      })
+    )
     .catch((error) => {
       alert(error.message);
     });
