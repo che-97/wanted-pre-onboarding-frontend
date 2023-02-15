@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import {call} from '../services/ApiService';
 import TodoList from '../components/todo/TodoList';
+import Layout from '../components/layout/Layout';
 
 function TodoPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,9 +34,10 @@ function TodoPage() {
   }
 
   return (
-    <section>
+    <Layout>
       <TodoList todos={loadedTodos} />
-    </section>
+    </Layout>
+    
   );
 }
 

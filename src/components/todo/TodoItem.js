@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Card from "../ui/Card";
+import classes from "./TodoItem.module.css";
 
 function TodoItem(props) {
   const [todoCheck, setTodoCheck] = useState(props.isCompleted);
@@ -42,8 +44,9 @@ function TodoItem(props) {
   }
 
   return (
+    <Card>
     <li>
-      <label>
+      <label className={classes.itemLabel}>
         <input
           type="checkbox"
           defaultChecked={todoCheck}
@@ -52,22 +55,25 @@ function TodoItem(props) {
         {!edited && <span>{todoData}</span>}
       </label>
       {edited ? (
-        <div>
+        <div className={classes.inlineblock}>
           <input data-testid="modify-input" onChange={(e) => onChangeTodoInput(e.target.value)} value={todoDataInput}/>
-          <button data-testid="submit-button" onClick={updateTodo} >제출</button>
-          <button data-testid="cancel-button" onClick={viewMode}>취소</button>
+          <div className={classes.itemBtn}>
+            <button className={classes.btn} data-testid="submit-button" onClick={updateTodo} >제출</button>
+            <button className={classes.btn} data-testid="cancel-button" onClick={viewMode}>취소</button>
+          </div>        
         </div>
       ) : (
-        <div>
-          <button data-testid="modify-button" onClick={editMode}>
+        <div className={classes.itemBtn}>
+          <button className={classes.btn}  data-testid="modify-button" onClick={editMode}>
             수정
           </button>
-          <button onClick={deleteTodo} data-testid="delete-button">
+          <button className={classes.btn}  onClick={deleteTodo} data-testid="delete-button">
             삭제
           </button>
         </div>
       )}
     </li>
+    </Card>
   );
 }
 

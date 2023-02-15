@@ -1,4 +1,6 @@
 import { useRef } from "react";
+import Card from "../ui/Card";
+import classes from "./AddTodo.module.css";
 
 function AddTodo(props) {
   const inputRef = useRef();
@@ -6,18 +8,26 @@ function AddTodo(props) {
   function add() {
     const todo = inputRef.current.value;
     props.onAddTodo({
-      todo: todo
+      todo: todo,
     });
     inputRef.current.value = "";
   }
 
   return (
-    <div>
-      <input data-testid="new-todo-input" ref={inputRef} />
-      <button data-testid="new-todo-add-button" onClick={add}>
+    <Card>
+      <input
+        className={classes.addinput}
+        data-testid="new-todo-input"
+        ref={inputRef}
+      />
+      <button
+        className={classes.addbutton}
+        data-testid="new-todo-add-button"
+        onClick={add}
+      >
         추가
       </button>
-    </div>
+    </Card>
   );
 }
 

@@ -1,0 +1,24 @@
+
+  .itemLabel {
+    display : inline-block;
+  }
+
+  .itemBtn {
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  .inlineblock {
+    display: inline-block;
+  }
+  
+  .btn {
+    cursor: pointer;
+    font: inherit;
+    color: white;
+    background-color: #181823;
+    border: 1px solid #181823;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    margin-right: 2px;
+  }

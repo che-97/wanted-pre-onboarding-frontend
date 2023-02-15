@@ -2,6 +2,7 @@ import { useState } from "react";
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
 import { call } from "../../services/ApiService";
+import classes from "./TodoList.module.css";
 
 function TodoList(props) {
   const [todos, setTodos] = useState(props.todos);
@@ -51,7 +52,7 @@ function TodoList(props) {
   return (
     <div>
       <AddTodo onAddTodo={addTodoHandler} />
-      <ul>
+      <ul className={classes.list}>
         {todos.length > 0 &&
           todos.map((todo) => {
             return (

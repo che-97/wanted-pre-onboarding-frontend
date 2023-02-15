@@ -1,0 +1,20 @@
+.addinput {
+    font: inherit;
+    color: #181823;
+    border-radius: 4px;
+    border: 1px solid white;
+    width: calc(100% - 150px);
+    text-align: left;
+    padding: 10px;
+    height: 60px;
+  }
+
+  .addbutton {
+    cursor: pointer;
+    font: inherit;
+    color: white;
+    background-color: #181823;
+    border: 1px solid #181823;
+    border-radius: 4px;
+    padding: 0.5rem 2.5rem;
+  }
