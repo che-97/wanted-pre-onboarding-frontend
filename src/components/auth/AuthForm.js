@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { signin, signup } from "../../services/ApiService";
 
+import classes from './AuthForm.module.css';
+
 function AuthForm(props) {
   const navigate = useNavigate();
 
@@ -47,10 +49,10 @@ function AuthForm(props) {
   };
 
   return (
-    <section>
+    <section className={classes.auth}>
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form>
-        <div>
+        <div className={classes.control}>
           <label htmlFor="email">Your Email</label>
           <input
             data-testid="email-input"
@@ -61,7 +63,7 @@ function AuthForm(props) {
             ref={emailInputRef}
           />
         </div>
-        <div>
+        <div className={classes.control}>
           <label htmlFor="password">Your Password</label>
           <input
             data-testid="password-input"
@@ -72,7 +74,7 @@ function AuthForm(props) {
             ref={passwordInputRef}
           />
         </div>
-        <div>
+        <div className={classes.actions}>
           {isLogin ? (
             <button
               data-testid="signin-button"
@@ -90,7 +92,7 @@ function AuthForm(props) {
               Create Account
             </button>
           )}
-          <button type="button" onClick={switchAuthModeHandler}>
+          <button className={classes.toggle} type="button" onClick={switchAuthModeHandler}>
             {isLogin ? "Create new account" : "Login with existing account"}
           </button>
         </div>
