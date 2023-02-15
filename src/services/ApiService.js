@@ -5,6 +5,11 @@ export function call(api, method, request) {
     "Content-Type": "application/json",
   });
 
+  const accessToken = localStorage.getItem("ACCESS_TOKEN");
+  if (accessToken && accessToken !== null) {
+    headers.append("Authorization", "Bearer " + accessToken);
+  }
+  
   let options = {
     headers: headers,
     url: API_BASE_URL + api,
