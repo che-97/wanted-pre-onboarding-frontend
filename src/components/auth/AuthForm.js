@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { signin, signup } from "../../services/ApiService"
+import { signin, signup } from "../../services/ApiService";
 
 function AuthForm(props) {
-  const navigate  = useNavigate();
-  
+  const navigate = useNavigate();
+
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -13,9 +13,9 @@ function AuthForm(props) {
 
   const switchAuthModeHandler = () => {
     if (isLogin) {
-        navigate("/signup", {replace: true});
+      navigate("/signup", { replace: true });
     } else {
-        navigate("/signin", {replace: true});
+      navigate("/signin", { replace: true });
     }
   };
 
@@ -30,25 +30,26 @@ function AuthForm(props) {
     }
   };
 
-  const submitHandler = (event) => {
+  const signinHandler = (event) => {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    signin({ email: enteredEmail, password: enteredPassword });
+  };
 
-    if (isLogin) {
-      //login
-      signin({email:enteredEmail,password:enteredPassword});
-    } else {
-      //sign up
-      signup({email:enteredEmail,password:enteredPassword});
-    }
+  const signupHandler = (event) => {
+    event.preventDefault();
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
+    signup({ email: enteredEmail, password: enteredPassword });
   };
 
   return (
     <section>
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
-      <form onSubmit={submitHandler}>
+      <form>
         <div>
           <label htmlFor="email">Your Email</label>
           <input
@@ -72,13 +73,23 @@ function AuthForm(props) {
           />
         </div>
         <div>
-          <button
-            data-testid="signup-button"
-            onClick={submitHandler}
-            disabled={isDisabledBtn}
-          >
-            {isLogin ? "Login" : "Create Account"}
-          </button>
+          {isLogin ? (
+            <button
+              data-testid="signin-button"
+              onClick={signinHandler}
+              disabled={isDisabledBtn}
+            >
+              Login
+            </button>
+          ) : (
+            <button
+              data-testid="signup-button"
+              onClick={signupHandler}
+              disabled={isDisabledBtn}
+            >
+              Create Account
+            </button>
+          )}
           <button type="button" onClick={switchAuthModeHandler}>
             {isLogin ? "Create new account" : "Login with existing account"}
           </button>
