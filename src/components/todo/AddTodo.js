@@ -6,7 +6,7 @@ function AddTodo(props) {
   function add() {
     const todo = inputRef.current.value;
     props.onAddTodo({
-      todo: todo,
+      todo: todo
     });
     inputRef.current.value = "";
   }

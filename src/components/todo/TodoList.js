@@ -37,6 +37,17 @@ function TodoList(props) {
       });
   }
 
+  
+  function updateTodoHandler(id,todoData){
+    call("/todos/"+id, "PUT", todoData)
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((error) => {
+        alert(error.message);
+    });
+  }
+
   return (
     <div>
       <AddTodo onAddTodo={addTodoHandler} />
@@ -51,6 +62,7 @@ function TodoList(props) {
                 isCompleted={todo.isCompleted}
                 userId={todo.userId}
                 onDeleteTodo={removeTodoHandler}
+                onUpdateTodo={updateTodoHandler}
               />
             );
           })}
