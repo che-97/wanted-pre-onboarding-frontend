@@ -34,4 +34,5 @@
 https://github.com/walking-sunset/selection-task/blob/master/README.md?plain=1
 
 ## 데모
-<img src="https://user-images.githubusercontent.com/80516736/219056380-a71b17e9-d129-4002-a373-bf31da5aa758.gif">
+<img src="https://user-images.githubusercontent.com/80516736/219060815-c9e8f8d4-7480-457b-8599-0c85d932efae.gif">
+<img src="https://user-images.githubusercontent.com/80516736/219060793-16706df9-e16b-4576-850a-e5e04ccd5fd1.gif">
